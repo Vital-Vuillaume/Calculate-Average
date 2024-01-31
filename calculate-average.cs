@@ -17,7 +17,7 @@ namespace MyCompiler
                 double sum = 0;
                 int i = 1;
 
-                Console.WriteLine($"Write the {i} number 'and' write end to finish.");
+                Console.WriteLine($"Write the {i} number 'end' write end to finish.");
                 
                 do
                 {
