@@ -1,39 +1,71 @@
 using System;
 
-namespace MyCompiler {
-    class Program {
-        public static void Main(string[] args) {
-            double nb;
-            bool valid;
-            int i = 1;
-            string input;
-            double sum = 0;
-            string sentence = $"Write the {i} number:";
-            Console.WriteLine(sentence);
+namespace MyCompiler 
+{
+    class Program 
+    {
+        public static void Main(string[] args) 
+        {
+            // input to start over.
 
-            do
-            {
-                input = Console.ReadLine();
-                valid = double.TryParse(input, out nb);
+            string again;
+            
+            do {
+                double nb;
+                bool valid;
+                string input;
+                double sum = 0;
+                int i = 1;
 
-                if(!valid)
+                Console.WriteLine($"Write the {i} number 'and' write end to finish.");
+                
+                do
                 {
-                    Console.WriteLine("Not a number, " + sentence);  
-                }
-                if(valid)
+                    // Input of averages
+
+                    input = Console.ReadLine();
+                    valid = double.TryParse(input, out nb);
+
+                    if(input != "end")
+                    {
+                        if(!valid)
+                        {
+                            Console.WriteLine($"Not a number, Write the {i} number:");  
+                        }
+                        else
+                        {
+                            i++;
+                            sum += nb;
+                            Console.WriteLine($"Write the {i} number:");
+                        }
+                    }
+                } while(input != "end");
+
+                // See if he's put in any average.
+
+                if(i > 2)
                 {
-                    i++;
-                    sum += nb;
-                    Console.WriteLine(sentence);
+                    CalculateAverage(sum, i);
                 }
-            } while(input != "end");
+                else 
+                {
+                    Console.WriteLine("\nThere is no number.");
+                }
 
-            Console.Clear();
+                // Sentences to start over.
 
+                Console.WriteLine("\nDo you want to do it all over again? [y or n]");
+                again = Console.ReadLine();
+            }while(again == "y");
+        }
+
+        // function to calculate the average.
+
+        static void CalculateAverage(double sum, int i)
+        {
             int nbDivise = i - 1;
             double average = sum / nbDivise;
-            Console.WriteLine("Average is: " + average);
-
+            Console.WriteLine("\n////////////// Average is: " + average + " //////////////");   
         }
     }
 }
