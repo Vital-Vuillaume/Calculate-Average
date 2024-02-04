@@ -6,6 +6,8 @@ namespace MyCompiler
     {
         public static void Main(string[] args) 
         {
+            // input to start over.
+
             string again;
             
             do {
@@ -19,6 +21,8 @@ namespace MyCompiler
                 
                 do
                 {
+                    // Input of averages.
+
                     input = Console.ReadLine();
                     valid = double.TryParse(input, out nb);
 
@@ -41,13 +45,19 @@ namespace MyCompiler
                     }
                 } while(input != "end" || i < 3);
 
+                // Calls the Function.
+
                 CalculateAverage(sum, i);
+
+                // Sentences to start over.
 
                 Console.WriteLine("\nDo you want to do it all over again? [y or n]");
                 again = Console.ReadLine();
             } while(again == "y");
         }
 
+        // function to calculate the average.
+        
         static void CalculateAverage(double sum, int i)
         {
             int nbDivise = i - 1;
