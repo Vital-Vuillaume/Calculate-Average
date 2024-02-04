@@ -6,8 +6,6 @@ namespace MyCompiler
     {
         public static void Main(string[] args) 
         {
-            // input to start over.
-
             string again;
             
             do {
@@ -17,12 +15,10 @@ namespace MyCompiler
                 double sum = 0;
                 int i = 1;
 
-                Console.WriteLine($"Write the {i} number and write 'end' to finish.");
+                Console.WriteLine($"Write the {i} number and write 'end' to finish:");
                 
                 do
                 {
-                    // Input of averages
-
                     input = Console.ReadLine();
                     valid = double.TryParse(input, out nb);
 
@@ -30,7 +26,7 @@ namespace MyCompiler
                     {
                         if(!valid)
                         {
-                            Console.WriteLine($"Not a number, Write the {i} number:");  
+                            Console.WriteLine($"Not a number, write the {i} number:");  
                         }
                         else
                         {
@@ -39,27 +35,18 @@ namespace MyCompiler
                             Console.WriteLine($"Write the {i} number:");
                         }
                     }
-                } while(input != "end");
+                    else if (i < 3)
+                    {
+                        Console.WriteLine($"There aren't enough numbers, write the {i} number:");
+                    }
+                } while(input != "end" || i < 3);
 
-                // See if he's put in any average.
-
-                if(i > 2)
-                {
-                    CalculateAverage(sum, i);
-                }
-                else 
-                {
-                    Console.WriteLine("\nThere is no number.");
-                }
-
-                // Sentences to start over.
+                CalculateAverage(sum, i);
 
                 Console.WriteLine("\nDo you want to do it all over again? [y or n]");
                 again = Console.ReadLine();
-            }while(again == "y");
+            } while(again == "y");
         }
-
-        // function to calculate the average.
 
         static void CalculateAverage(double sum, int i)
         {
